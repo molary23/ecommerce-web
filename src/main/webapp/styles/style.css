@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+
+.table tbody td{
+	vertical-align: middle;
+}
+
+.btn-incre, .btn-decre {
+	box-shadow: none;
+	font-size: 25px;
+}
+
+section{
+	min-height: 72.5rem;
+}
+
+.form-box {
+	width: 80%;
+	height: fit-content;
+	margin: auto;
+	border: 1px solid rgba(203, 203, 203, 0.4);
+	padding: 2rem 1rem;
+	border-radius: 0.5rem;
+}
+
+.share__links{
+	display: flex;
+	justify-content: space-between;
+}
