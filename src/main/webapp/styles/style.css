@@ -54,3 +54,7 @@ section{
 #myModal{
 	margin-top: 10rem;
 }
+
+.search-box .form-inline{
+	height: 40px;
+}

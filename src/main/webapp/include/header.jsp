@@ -8,6 +8,7 @@
 User auth = (User)request.getSession().getAttribute("auth");
 List<Order> orders = null;
 List<Favorite> favorites = null;
+String q = request.getParameter("q");
 if(auth != null){
 	request.setAttribute("auth", auth);
 	 orders = new OrderDoa(DbCon.getConnection()).getUserOrders(auth.getId());

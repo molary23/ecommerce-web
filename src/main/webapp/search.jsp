@@ -11,7 +11,6 @@ Utils.page_title = "Search";
 <%@include file="include/header.jsp"%>
 <%
 ProductDoa pd = new ProductDoa(DbCon.getConnection());
-String q = request.getParameter("q");
 List<Product> products = null;
 if(q != null){
 	 products = pd.getSearchProducts(q);
