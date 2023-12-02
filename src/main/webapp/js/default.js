@@ -3,4 +3,10 @@ $(document).ready(function(){
 });
 
 
-console.log(123)
+const openModal = () => {
+	document.getElementById("myModal").style.display = "block"
+}
+
+const closeModal = () => {
+	document.getElementById("myModal").style.display = "none"
+}

@@ -6,20 +6,25 @@
 <!DOCTYPE html>
 <html>
 <%
-Utils.page_title = "Home";
+Utils.page_title = "Search";
 %>
 <%@include file="include/header.jsp"%>
 <%
 ProductDoa pd = new ProductDoa(DbCon.getConnection());
+String q = request.getParameter("q");
+List<Product> products = null;
+if(q != null){
+	 products = pd.getSearchProducts(q);
+}
 
-List<Product> products = pd.getAllProducts();
+
 %>
 <body>
 	<%@include file="include/navbar.jsp"%>
 	<section>
 		<div class="container">
 			<div class="card-header my-3">
-				<h1>All Products</h1>
+				<h1>Searched Products</h1>
 			</div>
 			<div class="row">
 				<%

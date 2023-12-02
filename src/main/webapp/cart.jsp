@@ -17,8 +17,16 @@
 
 <div class="d-flex py-3">
 <h3>Total Price: $${total > 0 ? dcf.format(total) : 0.0}</h3>
-<a href="favorite.jsp" class="btn mx-3"><i class="fa-regular fa-heart fa-2x"></i></a>
-<a href="cart-check-out" class="btn btn-primary mx-3">Check Out</a>
+<a href="favorite.jsp" class="btn mx-3"><i class="fa-regular fa-heart fa-2x"></i> <% 
+        if(favorites != null && favorites.size() > 0){ %>
+        	<span class="badge badge-danger"><%= favorites.size() %></span> 
+       <% } %></a>
+       <% if(auth != null){%>
+       <a href="cart-check-out" class="btn">Check Out</a>
+      <% }else{%>
+       <button class="btn" onclick="openModal()">Login</button>
+      <% }%>
+
 </div>
 <table class="table table-light">
 <thead>
@@ -49,14 +57,16 @@ if(cart_list != null){
 		<td><%= c.getCategory() %></td>
 		<td>$ <%= dcf.format(c.getPrice()) %></td>
 		<td>
-		<form method="post" class="form-inline" action="order-now" >
+		<form method="post" class="form-inline order-form" action="order-now" >
 		<input type="hidden" name="id" value="<%= c.getId() %>" class="form-input" />
-		<div class="form-group d-flex justify-content-between">
-		<a class="btn btn-sm btn-danger btn-decre" href="<%= c.getQuantity() <= 1 ? "javascript:void(0)" : "quantity-update?action=dec&id=" + c.getId()  %>"><i class="fas fa-minus-square"></i></a>
+		<div class="form-group d-flex justify-content-between quality-controls">
+		<a class="btn btn-sm btn-decre" href="<%= c.getQuantity() <= 1 ? "javascript:void(0)" : "quantity-update?action=dec&id=" + c.getId()  %>"><i class="fas fa-minus-square"></i></a>
 		<input type="text" name="quantity" class="form-control" value="<%= c.getQuantity() %>" readonly />
-		<a class="btn btn-sm btn-primary btn-incre" href="quantity-update?action=inc&id=<%= c.getId() %>"><i class="fas fa-plus-square"></i></a>
+		<a class="btn btn-sm btn-incre" href="quantity-update?action=inc&id=<%= c.getId() %>"><i class="fas fa-plus-square"></i></a>
 		</div>
-		<button type="submit" class="btn btn-primary btn-sm">Buy</button>
+		<% if(auth != null) {%>
+		<button type="submit" class="btn btn-primary btn-sm">Buy Now</button>
+		<% } %>
 		</form>
 		</td>
 		<td>

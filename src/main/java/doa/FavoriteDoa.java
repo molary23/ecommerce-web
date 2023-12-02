@@ -19,14 +19,30 @@ public class FavoriteDoa {
 		this.con = con;
 	}
 
-	public boolean insertFavorite(Favorite favorite) {
+	public boolean addFavorite(Favorite favorite) {
 		boolean result = false;
 		try {
-			query = "INSERT INTO favorite(p_id, u_id, createdAt)values(?,?,?,?)";
+			query = "INSERT INTO favorite(p_id, u_id)values(?,?)";
 			pst = this.con.prepareStatement(query);
 			pst.setInt(1, favorite.getId());
 			pst.setInt(2, favorite.getUid());
-			pst.setString(4, favorite.getDate());
+			pst.executeUpdate();
+			result = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return result;
+	}
+
+	public boolean removeFavorite(int productId, int userId) {
+		boolean result = false;
+		try {
+			query = "DELETE FROM favorite WHERE p_id = ? AND u_id = ?";
+			pst = this.con.prepareStatement(query);
+			pst.setInt(1, productId);
+			pst.setInt(2, userId);
 			pst.executeUpdate();
 			result = true;
 

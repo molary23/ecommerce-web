@@ -24,7 +24,8 @@
 				<td scope="col">Name</td>
 				<td scope="col">Category</td>
 				<td scope="col">Price</td>
-				<td scope="col">Action</td>
+				<td scope="col">Add</td>
+				<td scope="col">Remove</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,7 +37,8 @@
 				<td><%= fav.getName()%></td>
 				<td><%= fav.getCategory()%></td>
 				<td><%=dcf.format(fav.getPrice()) %> </td>
-				<td><a class="btn btn-sm btn-info" href="cancel-order?id=<%=fav.getId()%>">Add to Cart</a></td>		
+				<td><a class="btn btn-sm btn-info" href="add-to-cart?id=<%=fav.getId()%>">Add to Cart</a></td>	
+				<td><a class="btn btn-sm btn-danger" href="remove-favorite?id=<%=fav.getId()%>">Remove Favorite</a></td>		
 			</tr>
 		<%}
 		}

@@ -41,6 +41,30 @@ public class ProductDoa {
 		return products;
 	}
 
+	public List<Product> getSearchProducts(String q) {
+		List<Product> products = new ArrayList<Product>();
+		try {
+			query = "SELECT * FROM products WHERE name LIKE ? OR category LIKE ?";
+			pst = this.con.prepareStatement(query);
+			pst.setString(1, "%" + q + "%");
+			pst.setString(2, "%" + q + "%");
+			res = pst.executeQuery();
+			while (res.next()) {
+				Product row = new Product();
+				row.setId(res.getInt("id"));
+				row.setName(res.getString("name"));
+				row.setCategory(res.getString("category"));
+				row.setImage(res.getString("image"));
+				row.setPrice(res.getDouble("price"));
+
+				products.add(row);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
 	public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
 		List<Cart> products = new ArrayList<Cart>();
 
