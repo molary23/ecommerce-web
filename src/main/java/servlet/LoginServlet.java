@@ -36,8 +36,7 @@ public class LoginServlet extends HttpServlet {
 				User user = userDoa.userLogin(email, password);
 				if (user != null) {
 					request.getSession().setAttribute("auth", user);
-					String uri = request.getRequestURI();
-					response.sendRedirect(uri);
+					response.sendRedirect(request.getHeader("referer"));
 				} else {
 					out.println("There is no user");
 				}

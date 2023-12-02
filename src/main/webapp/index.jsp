@@ -65,7 +65,7 @@ List<Product> products = pd.getAllProducts();
 								<a href="#" class="btn btn__share" title="Share Product"
 									aria-label="Share product" data-trigger="focus"
 									data-toggle="popover" data-placement="bottom"
-									data-content="<div class='share__links'><a href='https://wa.me/2348137530659/?text=<%=p.getId()%>'><i class='fa-brands fa-whatsapp'></i></a> <a href='https://www.facebook.com/sharer/sharer.php?u=<%=p.getId()%>' target='_blank'><i class='fa-brands fa-facebook'></i></a><a href='https://twitter.com/intent/tweet?text=<%=p.getId()%>' target='_blank'><i class='fa-brands fa-x-twitter'></i></a></div>"
+									data-content="<div class='share__links'><a href='https://wa.me/2348137530659/?text=<%=p.getId()%>'><i class='fa-brands fa-whatsapp fa-2x'></i></a> <a href='https://www.facebook.com/sharer/sharer.php?u=<%=p.getId()%>' target='_blank'><i class='fa-brands fa-facebook fa-2x'></i></a><a href='https://twitter.com/intent/tweet?text=<%=p.getId()%>' target='_blank'><i class='fa-brands fa-x-twitter fa-2x'></i></a></div>"
 									data-html="true"><i class="fa-solid fa-share-nodes"></i></a>
 							</div>
 						</div>
